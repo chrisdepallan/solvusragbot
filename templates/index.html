@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Travel Advisor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-plane"></i>
+                    <h1>Smart Travel Advisor</h1>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot" id="statusDot"></div>
+                    <span id="statusText">Connecting...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Chat Container -->
+        <main class="chat-container">
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-text">
+                            <p>Hello! I'm your Smart Travel Advisor. I can help you with:</p>
+                            <ul>
+                                <li>✈️ Flight price predictions</li>
+                                <li>📋 Travel policies and procedures</li>
+                                <li>📄 Documentation requirements</li>
+                                <li>💡 General travel information</li>
+                            </ul>
+                            <p>What would you like to know?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="quick-action-btn" onclick="sendQuickMessage('What is the travel policy for international flights?')">
+                    <i class="fas fa-globe"></i>
+                    Travel Policy
+                </button>
+                <button class="quick-action-btn" onclick="sendQuickMessage('Predict flight price from Delhi to Mumbai')">
+                    <i class="fas fa-calculator"></i>
+                    Price Prediction
+                </button>
+                <button class="quick-action-btn" onclick="sendQuickMessage('What documents do I need for business travel?')">
+                    <i class="fas fa-file-alt"></i>
+                    Documents
+                </button>
+                <button class="quick-action-btn" onclick="sendQuickMessage('How do I submit expense reports?')">
+                    <i class="fas fa-receipt"></i>
+                    Expenses
+                </button>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="chat-input-container">
+                <div class="chat-input">
+                    <input type="text" id="messageInput" placeholder="Type your message..." 
+                           onkeypress="handleKeyPress(event)">
+                    <button id="sendButton" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Processing your request...</p>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div class="toast-container" id="toastContainer"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

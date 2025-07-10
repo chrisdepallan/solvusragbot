@@ -1,0 +1,25 @@
+# Web framework
+Flask
+
+# OpenAI API
+openai
+
+# environment variables
+python-dotenv
+
+# PDF + Vector Search
+faiss-cpu
+sentence-transformers
+
+# ML pipeline (model + preprocessing)
+scikit-learn==1.6.1
+joblib
+pandas
+numpy
+
+# Optional: if you use SHAP
+shap
+
+# Additional dependencies for web interface
+Werkzeug
+requests

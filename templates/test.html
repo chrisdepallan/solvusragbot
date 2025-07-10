@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Smart Travel Advisor</title>
+</head>
+<body>
+    <h1>Test Smart Travel Advisor</h1>
+    <p>This is a test page to verify the Flask app is working.</p>
+    
+    <form id="testForm">
+        <input type="text" id="testInput" placeholder="Enter your query..." style="width: 300px; padding: 10px;">
+        <button type="submit">Test Query</button>
+    </form>
+    
+    <div id="result" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;"></div>
+    
+    <script>
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const query = document.getElementById('testInput').value;
+            const resultDiv = document.getElementById('result');
+            
+            try {
+                const response = await fetch('/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ query: query })
+                });
+                
+                const data = await response.json();
+                resultDiv.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                resultDiv.innerHTML = 'Error: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html>
