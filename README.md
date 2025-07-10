@@ -102,22 +102,6 @@ Health check endpoint.
 ### GET /test-ml
 Test endpoint for ML model functionality.
 
-## Problem Resolution
-
-### Original Error:
-```
-"ML prediction failed: Expected 2D array, got 1D array instead:\narray=[{'source': 'banglore', 'dest': 'new delhi', 'month': 'Unknown', 'airline': 'Alliance Air'}].\nReshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample."
-```
-
-### Root Cause:
-The ML model was receiving a list of dictionaries instead of a properly formatted pandas DataFrame.
-
-### Solution:
-1. **Feature DataFrame Creation**: Created `create_feature_dataframe()` function to build proper DataFrame
-2. **Data Format**: Ensured all features match the training data structure
-3. **Type Handling**: Proper handling of categorical and numerical features
-4. **Default Values**: Sensible defaults for missing information
-
 ## Usage Examples
 
 ### 1. Flight Price Prediction
